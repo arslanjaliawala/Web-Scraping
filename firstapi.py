@@ -20,14 +20,14 @@ originlat = '25.3960'
 originlng = '68.3578'
 #places = input("Please enter places you wish to visit")
 places = "restaurant"
-url = url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+originlat+','+originlng+"&radius=1500&type="+places+"&key=AIzaSyDNroC_odFb_wK-MNGd__dz70ZtJM0ru9o"
+url = url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+originlat+','+originlng+"&radius=1500&type="+places+"&key="
 response = requests.get(url = url).json()
 count = 0
 for count in response['results']:
     name = (count['name'])
     lat = str(count['geometry']['location']['lat'])
     lng = str(count['geometry']['location']['lng'])
-    newurl = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+originlat+","+originlng+"&destinations="+ lat +"%2C"+lng+"&key=AIzaSyDNroC_odFb_wK-MNGd__dz70ZtJM0ru9o"
+    newurl = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+originlat+","+originlng+"&destinations="+ lat +"%2C"+lng+"&key="
     response2 = requests.get(url = newurl).json()
     time = response2['rows'][0]['elements'][0]['duration']['text']
     print(name + " " + time)
